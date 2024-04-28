@@ -3,21 +3,19 @@
 
 # Earthquake Visualisation
 
-The below Leaflet map visualisation of all earthquakes as per the data on United States Geological Survey (2024).
+The below Leaflet map visualisation is of all earthquakes in the past 30 days as per the data on United States Geological Survey (2024).
 
 
+![Leaflet Earthquake Map](Leaflet_earthquake_map.PNG)
 
+The code and visualisation was created with the assistance of Ask BCS session with Siphe, plus assistance from using solved Bootcamp activities and ChatGPT to debug.
 
-The code and visualisation was created with the assistance of my tutor Sandile in a Zoom session, plus assistance from using solved Bootcamp activities and ChatGPT to debug.
-
-
-
-Refer to logic javascript file for code.
+Refer to 'logic.js', 'style.css', and 'index.html' files for code.
 
 
 
 # References
-Module-15-Leaflet-challenge, Tutor Session with Sandile, personal communication (Zoom), April 28, 2024
+Module-15-Leaflet-challenge, Ask BCS Session with Siphe, personal communication (Slack), April 28, 2024
 
 OpenAI. (2024). ChatGPT [Computer software]. Retrieved 26 April, 2024 from [URL](https://chat.openai.com/)
 

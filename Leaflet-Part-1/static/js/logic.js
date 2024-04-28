@@ -10,22 +10,29 @@ const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 const map = L.map('map').setView([0, 0], 2);
 tileLayer.addTo(map);
 
-// earthquake magnitude amrker size
+// earthquake magnitude marker size
 function getSize(magnitude) {
     return magnitude * 5;
 }
 
 // earthquake depth marker color
 function getColor(depth) {
-    if (depth < 10) {
-        return "yellow"; 
-    } else if (depth < 30) {
-        return "orange"; 
-    } else if (depth < 50) {
-        return "red"; 
-    } else {
-        return "purple"; 
+    const grades = [-10, 10, 30, 50, 70, 90];
+    const colors = [
+        "#98ee00",
+        "#d4ee00",
+        "#eecc00",
+        "#ee9c00",
+        "#ea822c",
+        "#ea2c2c"
+    ];
+
+    for (let i = 0; i < grades.length; i++) {
+        if (depth <= grades[i]) {
+            return colors[i];
+        }
     }
+    return colors[colors.length - 1]; 
 }
 
 // Fetch GeoJSON 
@@ -54,13 +61,21 @@ const legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function() {
     const div = L.DomUtil.create('div', 'info legend');
-    const depths = [0, 10, 30, 50];
-    const labels = [];
+    const grades = [-10, 10, 30, 50, 70, 90];
+    const colors = [
+        "#98ee00",
+        "#d4ee00",
+        "#eecc00",
+        "#ee9c00",
+        "#ea822c",
+        "#ea2c2c"
+    ];
 
-    for (let i = 0; i < depths.length; i++) {
+    // Loop throughcreating box with corresponding description
+    for (let i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            '<i style="background:' + getColor(depths[i] + 1) + '"></i> ' +
-            depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + ' km<br>' : '+ km');
+             "<i style='background: " + colors[i] + "'></i> " +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' km<br>' : '+ km');
     }
 
     return div;
